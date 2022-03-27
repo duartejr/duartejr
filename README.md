@@ -1,4 +1,4 @@
-### Hi there 👋. I'm Duarte Junior and my nickname is duartejr
+### Hi there 👋. I'm Duarte Junior
 ### Welcome to my GitHub profile 👋
 
 ### Tools and Technologies

@@ -1,3 +1,6 @@
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+          
 ### Hi there 👋. I'm Duarte Junior and my nickname is duartejr
 ### Welcome to my GitHub profile 👋
 

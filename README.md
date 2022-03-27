@@ -1,5 +1,6 @@
-### Hi there 👋
+### Hi there 👋. I'm Duarte Junior
 
+- 🌱 I’m currently learning Data Science in Blue Edtech
 <!--
 **duartejr/duartejr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 

@@ -1,9 +1,9 @@
 ### Hi there 👋. I'm Duarte Junior
 ### Welcome to my GitHub profile 👋
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=duartejr)](https://github.com/anuraghazra/github-readme-stats)
 [![DuarteJr's GitHub stats](https://github-readme-stats.vercel.app/api?username=duartejr&hide=contribs,prs,issues&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
 
 
 ### Tools and Technologies

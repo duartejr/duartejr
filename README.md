@@ -1,6 +1,13 @@
 ### Hi there 👋. I'm Duarte Junior
 ### Welcome to my GitHub profile 👋
 
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=duartejr&&hide=contribs,prs,issues&show_icons=true" />
+</a>
+<a href="https://github.com/anuraghazra/convoychat">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=duartejr&repo=convoychat" />
+</a>
+
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=duartejr&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
 [![DuarteJr's GitHub stats](https://github-readme-stats.vercel.app/api?username=duartejr&hide=contribs,prs,issues&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
 

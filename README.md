@@ -1,6 +1,9 @@
 ### Hi there 👋. I'm Duarte Junior
 ### Welcome to my GitHub profile 👋
 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=duartejr)](https://github.com/anuraghazra/github-readme-stats)
+
+
 ### Tools and Technologies
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="20" height="20"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="20" height="20"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" width="20" height="20" /> 
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gimp/gimp-original.svg" width="20" height="20" /> 

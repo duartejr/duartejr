@@ -2,7 +2,8 @@
 ### Welcome to my GitHub profile 👋
 
 [![DuarteJr's GitHub stats](https://github-readme-stats.vercel.app/api?username=duartejr&hide=contribs,prs,issues&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=duartejr&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
 
 
 ### Tools and Technologies

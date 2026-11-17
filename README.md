@@ -36,7 +36,9 @@ AI Engineer & Data Engineer. I build LLM agents, evaluation pipelines and data p
 <a href="mailto:duarte.jr105@gmail.com"><img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=white"></a>
 <a href="https://www.instagram.com/duartjr/" target="_blank"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"></a>
 
+#### Game of the day
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/duartejr/duartejr/output/github-snake-dark.svg">
-  <img alt="Snake eating my contribution graph" src="https://raw.githubusercontent.com/duartejr/duartejr/output/github-snake.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/duartejr/duartejr/output/game-dark.svg">
+  <img alt="Arcade game of the day playing on my contribution graph" src="https://raw.githubusercontent.com/duartejr/duartejr/output/game.svg">
 </picture>

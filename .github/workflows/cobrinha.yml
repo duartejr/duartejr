@@ -4,6 +4,10 @@ on:
   schedule: # todo dia às 06:00 UTC (03:00 em Brasília)
     - cron: "0 6 * * *"
   workflow_dispatch:
+    inputs:
+      game:
+        description: "Force a game (optional)"
+        required: false
   push:
     branches: [main]
 
@@ -33,6 +37,7 @@ jobs:
           games=(snake pacman breakout galaga puzzle-bobble bomberman minesweeper tetris)
           prev=$(cat dist/game.txt 2>/dev/null || true)
           game=$prev
+          if [ -n "${{ inputs.game }}" ]; then prev=""; game="${{ inputs.game }}"; fi
           while [ "$game" = "$prev" ]; do game=${games[RANDOM % ${#games[@]}]}; done
           echo "Previous: ${prev:-none}  Today: $game"
           echo "game=$game" >> "$GITHUB_OUTPUT"
@@ -48,7 +53,7 @@ jobs:
 
       - name: Generate arcade game
         if: steps.pick.outputs.game != 'snake'
-        uses: abozanona/pacman-contribution-graph@v5.3.2
+        uses: abozanona/pacman-contribution-graph@70945878b1118303b37b88060fc7145e1a57d7b1 # main 2026-11, has tetris
         with:
           github_user_name: ${{ github.repository_owner }}
           games: ${{ steps.pick.outputs.game }}

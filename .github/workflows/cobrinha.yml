@@ -1,8 +1,8 @@
-name: Generate snake
+name: Profile assets (game of the day + languages)
 
 on:
-  schedule: # a cada 12 horas
-    - cron: "0 */12 * * *"
+  schedule: # todo dia às 06:00 UTC (03:00 em Brasília)
+    - cron: "0 6 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -13,16 +13,82 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
+    env:
+      METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+      RAW: https://raw.githubusercontent.com/${{ github.repository }}/output
     steps:
-      - uses: Platane/snk@v3
+      # Keep last run's files so a failed step never leaves a broken image
+      - name: Restore previous files
+        run: |
+          mkdir -p dist
+          for f in game.svg game-dark.svg game.txt languages.svg; do
+            curl -sfL "$RAW/$f" -o "dist/$f" || rm -f "dist/$f"
+          done
+
+      # Pick today's game at random, never repeating yesterday's
+      - name: Pick game of the day
+        id: pick
+        run: |
+          games=(snake pacman breakout galaga puzzle-bobble bomberman minesweeper tetris)
+          prev=$(cat dist/game.txt 2>/dev/null || true)
+          game=$prev
+          while [ "$game" = "$prev" ]; do game=${games[RANDOM % ${#games[@]}]}; done
+          echo "Previous: ${prev:-none}  Today: $game"
+          echo "game=$game" >> "$GITHUB_OUTPUT"
+
+      - name: Generate snake
+        if: steps.pick.outputs.game == 'snake'
+        uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+            tmp/snake.svg
+            tmp/snake-dark.svg?palette=github-dark
 
-      - uses: crazy-max/ghaction-github-pages@v4
+      - name: Generate arcade game
+        if: steps.pick.outputs.game != 'snake'
+        uses: abozanona/pacman-contribution-graph@v5.3.2
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          games: ${{ steps.pick.outputs.game }}
+
+      - name: Publish game files
+        run: |
+          g=${{ steps.pick.outputs.game }}
+          if [ "$g" = snake ]; then light=tmp/snake.svg; dark=tmp/snake-dark.svg
+          else light=dist/$g-contribution-graph.svg; dark=dist/$g-contribution-graph-dark.svg; fi
+          test -s "$light" && test -s "$dark"
+          cp "$light" dist/game.svg.new && cp "$dark" dist/game-dark.svg.new
+          rm -f dist/*-contribution-graph*.svg
+          mv dist/game.svg.new dist/game.svg && mv dist/game-dark.svg.new dist/game-dark.svg
+          echo "$g" > dist/game.txt
+
+      # Language percentages across public and private repos (needs METRICS_TOKEN)
+      - name: Generate languages card
+        if: env.METRICS_TOKEN != ''
+        continue-on-error: true
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: languages.svg
+          output_action: none
+          base: ""
+          config_timezone: America/Sao_Paulo
+          repositories_affiliations: owner
+          plugin_languages: yes
+          plugin_languages_details: percentage
+          plugin_languages_limit: 8
+          plugin_languages_ignored: html, css, jupyter notebook
+
+      - name: Collect languages card
+        if: env.METRICS_TOKEN != ''
+        continue-on-error: true
+        run: |
+          test -s /metrics_renders/languages.svg && sudo cp /metrics_renders/languages.svg dist/languages.svg
+          sudo chown -R "$USER" dist
+
+      - uses: crazy-max/ghaction-github-pages@v5
         with:
           target_branch: output
           build_dir: dist
